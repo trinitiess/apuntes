@@ -57,6 +57,19 @@
             color: #58a6ff;
         }
 
+        pre {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+            color: #e6edf3;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
         footer {
             text-align: center;
             color: #8b949e;
@@ -92,7 +105,60 @@
 
     <section class="tema">
         <h2>Aplicaciones Web</h2>
-        <p>Apache, HTML, PHP, MySQL y WordPress.</p>
+
+        <pre>
+sudo apache2ctl configtest
+
+sudo cp -r template/. /var...
+
+CREATE USER 'max'@'localhost' IDENTIFIED BY '[CONTRASEÑA]';
+
+GRANT ALL PRIVILEGES ON *.* TO 'max'@'localhost' WITH GRANT OPTION;
+
+sudo chown -R www-data:www-data /var/www/html/
+
+sudo a2enmod rewrite auth_basic authn_file authz_user authz_groupfile authz_core dir mime headers env setenvif
+
+sudo a2ensite empresa.conf
+
+
+Проверка:
+
+&lt;Directory /var>
+    Require all granted
+    AllowOverride All
+&lt;/Directory>
+
+
+Проверка autenticación:
+
+&lt;Directory /var>
+    AuthType Basic
+    AuthName "intr. Nom"
+    AuthUserFile /etc/apache2/.htpasswd
+    Require valid-user
+&lt;/Directory>
+
+
+Última configuración:
+
+&lt;Directory /var>
+    AuthType Basic
+    AuthName "intr. Nom"
+    AuthUserFile /etc/apache2/.htpasswd
+    AuthGroupFile /etc/apache2/.htgroup
+    Require group admin
+&lt;/Directory>
+
+
+Servidor de archivos:
+
+&lt;Directory /var>
+    Options Indexes
+    AllowOverride All
+    Require all granted
+&lt;/Directory>
+        </pre>
     </section>
 
 </main>
