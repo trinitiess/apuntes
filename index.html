@@ -1,12 +1,120 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apuntes</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0d1117;
+            color: #e6edf3;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 25px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #58a6ff;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            background: #161b22;
+            color: white;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        section {
+            margin-top: 25px;
+            padding: 22px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #58a6ff;
+        }
+
+        footer {
+            text-align: center;
+            color: #8b949e;
+            padding: 30px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Mis apuntes</h1>
-    <p>Mi página funciona correctamente.</p>
+
+<header>
+    <h1>📚 Apuntes</h1>
+    <p>Mi espacio de estudio</p>
+</header>
+
+<main>
+
+    <input
+        type="search"
+        id="busqueda"
+        placeholder="Buscar en mis apuntes..."
+    >
+
+    <section class="tema">
+        <h2>Informática</h2>
+        <p>Material de estudio y conceptos de informática.</p>
+    </section>
+
+    <section class="tema">
+        <h2>Redes</h2>
+        <p>Apuntes sobre redes, protocolos y configuración.</p>
+    </section>
+
+    <section class="tema">
+        <h2>Aplicaciones Web</h2>
+        <p>Apache, HTML, PHP, MySQL y WordPress.</p>
+    </section>
+
+</main>
+
+<footer>
+    Apuntes personales · 2026
+</footer>
+
+<script>
+    const busqueda = document.getElementById("busqueda");
+
+    busqueda.addEventListener("input", function () {
+        const texto = busqueda.value.toLowerCase();
+
+        document.querySelectorAll(".tema").forEach(function (tema) {
+            tema.style.display =
+                tema.textContent.toLowerCase().includes(texto)
+                ? "block"
+                : "none";
+        });
+    });
+</script>
+
 </body>
 </html>
