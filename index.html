@@ -97,11 +97,13 @@
         <h2>Aplicaciones Web</h2>
 
         <pre>
+APACHE:
+
 sudo apache2ctl configtest
 
 sudo cp -r template/. /var...
 
-CREATE USER 'max'@'localhost' IDENTIFIED BY '[CONTRASEÑA]';
+CREATE USER 'max'@'localhost' IDENTIFIED BY '[TU_CONTRASEÑA]';
 
 GRANT ALL PRIVILEGES ON *.* TO 'max'@'localhost' WITH GRANT OPTION;
 
@@ -112,7 +114,20 @@ sudo a2enmod rewrite auth_basic authn_file authz_user authz_groupfile authz_core
 sudo a2ensite empresa.conf
 
 
-Проверка:
+PHPMYADMIN:
+
+http://localhost/phpmyadmin
+
+Crear base de datos: wordpress
+
+Privilegios de max:
+- Datos
+- Estructura
+
+Comprobar mediante WordPress que los privilegios funcionan correctamente.
+
+
+COMPROBACIONES APACHE:
 
 &lt;Directory /var>
     Require all granted
@@ -120,7 +135,7 @@ sudo a2ensite empresa.conf
 &lt;/Directory>
 
 
-Проверка autenticación:
+AUTENTICACIÓN BASIC:
 
 &lt;Directory /var>
     AuthType Basic
@@ -130,7 +145,7 @@ sudo a2ensite empresa.conf
 &lt;/Directory>
 
 
-Última configuración:
+AUTENTICACIÓN POR GRUPOS:
 
 &lt;Directory /var>
     AuthType Basic
@@ -141,13 +156,34 @@ sudo a2ensite empresa.conf
 &lt;/Directory>
 
 
-Servidor de archivos:
+SERVIDOR DE ARCHIVOS:
 
 &lt;Directory /var>
     Options Indexes
     AllowOverride All
     Require all granted
 &lt;/Directory>
+
+
+WORDPRESS:
+
+cd ~/Downloads
+
+wget https://wordpress.org/latest.zip
+
+sudo cp -a wordpress/. /var/www/html/wordpress/
+
+cd /var/www/html/wordpress
+
+sudo cp wp-config-sample.php wp-config.php
+
+
+CONFIGURACIÓN BASE DE DATOS EN wp-config.php:
+
+DB_NAME: wordpress
+DB_USER: max
+DB_PASSWORD: [TU_CONTRASEÑA]
+DB_HOST: localhost
         </pre>
     </section>
 
